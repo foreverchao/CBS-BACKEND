@@ -10,8 +10,8 @@ app = Flask(__name__)
 app.secret_key = "secreatkey"
 app.config['MONGO_URI'] = ""
 @app.route("/")
-#def home():
-    #return "Hello Flask HI HI"
+def home():
+    return "Hello Flask health ok"
 
 
 @app.route("/add",methods=["POST"])
