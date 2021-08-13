@@ -1,9 +1,6 @@
-from flask import Flask,jsonify,request
+from flask import Flask,request
 from mongo_practice import getAllUserInfo,getOneUserInfo,delOneUser,addOneUser
-from bson.objectid import ObjectId
 from bson.json_util import dumps
-import pymongo
-from werkzeug.security import generate_password_hash,check_password_hash
 from flask_cors import CORS
 
 

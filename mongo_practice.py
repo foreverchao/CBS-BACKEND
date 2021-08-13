@@ -1,4 +1,3 @@
-import collections
 from flask.json import jsonify
 import pymongo
 from bson.objectid import ObjectId
