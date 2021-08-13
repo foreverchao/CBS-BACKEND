@@ -4,16 +4,20 @@ from bson.objectid import ObjectId
 from bson.json_util import dumps
 import pymongo
 from werkzeug.security import generate_password_hash,check_password_hash
+from flask_cors import CORS
 
 
 app = Flask(__name__)
 app.secret_key = "secreatkey"
 app.config['MONGO_URI'] = ""
-
+CORS(app)
 #def home():
     #return "Hello Flask health ok"
 
 @app.route("/")
+def index():
+    return 'hellth ok'
+    
 @app.route("/add",methods=["POST"])
 def add_user():
     _json = request.json
