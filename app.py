@@ -9,11 +9,11 @@ from werkzeug.security import generate_password_hash,check_password_hash
 app = Flask(__name__)
 app.secret_key = "secreatkey"
 app.config['MONGO_URI'] = ""
+
+#def home():
+    #return "Hello Flask health ok"
+
 @app.route("/")
-def home():
-    return "Hello Flask health ok"
-
-
 @app.route("/add",methods=["POST"])
 def add_user():
     _json = request.json
