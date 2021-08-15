@@ -8,6 +8,11 @@ client = pymongo.MongoClient("mongodb+srv://root:root123@mycluster.bqv3q.mongodb
 db = client.website
 collection = db.members
 
+def getOneUserLoginInfo(email,password):
+    user = collection.find_one({'email' :email,'password' : password})
+    resp = dumps(user)
+    return resp
+
 
 def addOneUser(_email,_password):
     user = collection.insert_one({

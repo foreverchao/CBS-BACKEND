@@ -1,5 +1,5 @@
 from flask import Flask,request,jsonify
-from mongo_practice import getAllUserInfo,getOneUserInfo,delOneUser,addOneUser
+from mongo_practice import getAllUserInfo,getOneUserInfo,delOneUser,addOneUser,getOneUserLoginInfo
 from bson.json_util import dumps
 from flask_cors import CORS
 from flask_jwt_extended import JWTManager
@@ -25,14 +25,24 @@ def index():
 
 @app.route('/login', methods=['POST'])
 def login(): 
-    username = request.json.get('username', None) 
+    email = request.json.get('email', None) 
     password = request.json.get('password', None) 
-
-    if username != 'test' or password != 'test': 
-        return jsonify({"msg": "Bad username or password"}), 401
+    resp = getOneUserLoginInfo(email,password)
+    if resp == "null":
+        return jsonify({"msg": "this account is null !"}), 401
     
-    access_token = create_access_token(identity=username)
+    access_token = create_access_token(identity=email)
     return jsonify(access_token=access_token)
+
+@app.route('/userlogin', methods=['GET'])
+def userlogin(): 
+    _json = request.json
+    _email = _json['email']
+    _password = _json['password']
+    resp = getOneUserLoginInfo(_email,_password)
+    if resp == "null":
+        return jsonify({"msg": "this account is null !"})
+    return resp
     
 @app.route("/add",methods=["POST"])
 def add_user():
