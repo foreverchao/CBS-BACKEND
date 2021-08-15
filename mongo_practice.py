@@ -10,7 +10,8 @@ collection = db.members
 
 def getOneUserLoginInfo(email,password):
     user = collection.find_one({'email' :email,'password' : password})
-    resp = dumps(user)
+    print(user["_id"])
+    resp = dumps(user["_id"])
     return resp
 
 

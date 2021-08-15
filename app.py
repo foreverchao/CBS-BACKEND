@@ -1,6 +1,6 @@
 from flask import Flask,request,jsonify
 from mongo_practice import getAllUserInfo,getOneUserInfo,delOneUser,addOneUser,getOneUserLoginInfo
-from bson.json_util import dumps
+from bson.objectid import ObjectId
 from flask_cors import CORS
 from flask_jwt_extended import JWTManager
 from flask_jwt_extended import create_access_token
@@ -28,11 +28,13 @@ def login():
     email = request.json.get('email', None) 
     password = request.json.get('password', None) 
     resp = getOneUserLoginInfo(email,password)
+    
     if resp == "null":
         return jsonify({"msg": "this account is null !"}), 401
     
     access_token = create_access_token(identity=email)
-    return jsonify(access_token=access_token)
+    
+    return jsonify(access_token=access_token,_id=resp)
 
 @app.route('/userlogin', methods=['GET'])
 def userlogin(): 
