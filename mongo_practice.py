@@ -10,9 +10,12 @@ collection = db.members
 
 def getOneUserLoginInfo(email,password):
     user = collection.find_one({'email' :email,'password' : password})
-    print(user["_id"])
-    resp = dumps(user["_id"])
-    return resp
+    print("hehe",user)
+    if user != None:
+        resp = str(user["_id"])
+        return resp
+    else:
+        return "401"
 
 
 def addOneUser(_email,_password):

@@ -28,13 +28,13 @@ def login():
     email = request.json.get('email', None) 
     password = request.json.get('password', None) 
     resp = getOneUserLoginInfo(email,password)
-    
-    if resp == "null":
+    print ("he",resp)
+    if resp == "401":
         return jsonify({"msg": "this account is null !"}), 401
     
     access_token = create_access_token(identity=email)
     
-    return jsonify(access_token=access_token,_id=resp)
+    return  jsonify(access_token=access_token,id=resp)
 
 @app.route('/userlogin', methods=['GET'])
 def userlogin(): 
