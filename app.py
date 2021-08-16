@@ -64,6 +64,7 @@ def users():
 
 
 @app.route("/user/<id>")
+@jwt_required()
 def user(id):
     user = getOneUserInfo(id)
     return user
