@@ -6,6 +6,8 @@ from flask_jwt_extended import JWTManager
 from flask_jwt_extended import create_access_token
 from flask_jwt_extended import jwt_required
 
+import borrow
+
 
 
 
@@ -16,6 +18,8 @@ CORS(app)
 jwt = JWTManager()
 app.config['JWT_SECRET_KEY'] = 'this-should-be-change'
 jwt.init_app(app)
+
+borrow.init_app(app)
 #def home():
     #return "Hello Flask health ok"
 
