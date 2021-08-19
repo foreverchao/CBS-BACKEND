@@ -10,8 +10,10 @@ import borrow
 
 
 
-
 app = Flask(__name__)
+
+borrow.init_app(app)
+
 app.secret_key = "secreatkey"
 app.config['MONGO_URI'] = ""
 CORS(app)
@@ -19,7 +21,12 @@ jwt = JWTManager()
 app.config['JWT_SECRET_KEY'] = 'this-should-be-change'
 jwt.init_app(app)
 
-borrow.init_app(app)
+
+
+
+
+
+
 #def home():
     #return "Hello Flask health ok"
 
