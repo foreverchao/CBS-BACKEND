@@ -8,8 +8,8 @@ client = pymongo.MongoClient("mongodb+srv://root:root123@mycluster.bqv3q.mongodb
 db = client.website
 collection = db.members
 
-def getOneUserLoginInfo(email,password):
-    user = collection.find_one({'email' :email,'password' : password})
+def getOneUserLoginInfo(email):
+    user = collection.find_one({'email' :email})
     print("hehe",user)
     if user != None:
         resp = str(user["_id"])

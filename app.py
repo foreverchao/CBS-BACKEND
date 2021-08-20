@@ -47,12 +47,12 @@ def login():
     
     return  jsonify(access_token=access_token,id=resp)
 
-@app.route('/userlogin', methods=['GET'])
+@app.route('/userlogin', methods=['POST'])
 def userlogin(): 
     _json = request.json
     _email = _json['email']
-    _password = _json['password']
-    resp = getOneUserLoginInfo(_email,_password)
+    #_password = _json['password']
+    resp = getOneUserLoginInfo(_email)
     if resp == "null":
         return jsonify({"msg": "this account is null !"})
     return resp
@@ -81,6 +81,7 @@ def user(id):
     return user
 
 @app.route("/delete/<id>",methods=['DELETE'])
+@jwt_required()
 def delete_user(id):
     userDelete = delOneUser(id)
     return userDelete
