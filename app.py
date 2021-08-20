@@ -38,7 +38,7 @@ def index():
 def login(): 
     email = request.json.get('email', None) 
     password = request.json.get('password', None) 
-    resp = getOneUserLoginInfo(email,password)
+    resp = getOneUserLogin(email,password)
     print ("he",resp)
     if resp == "401":
         return jsonify({"msg": "this account is null !"}), 401

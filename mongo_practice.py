@@ -17,6 +17,15 @@ def getOneUserLoginInfo(email):
     else:
         return "401"
 
+def getOneUserLogin(email,password):
+    user = collection.find_one({'email' :email,'password':password})
+    print("hehe",user)
+    if user != None:
+        resp = str(user["_id"])
+        return resp
+    else:
+        return "401"
+
 
 def addOneUser(_email,_password):
     user = collection.insert_one({
