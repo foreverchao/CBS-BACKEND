@@ -1,5 +1,5 @@
 from flask import Flask,request,jsonify
-from mongo_practice import getAllUserInfo,getOneUserInfo,delOneUser,addOneUser,getOneUserLoginInfo
+from mongo_practice import getAllUserInfo,getOneUserInfo,delOneUser,addOneUser,getOneUserLoginInfo,getOneUserLogin
 from bson.objectid import ObjectId
 from flask_cors import CORS
 from flask_jwt_extended import JWTManager
